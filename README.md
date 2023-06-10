@@ -1,6 +1,9 @@
 # Raspberry Pi Monitoring
 This repo contains an easy to setup monitoring solution for a Raspberry Pi, using Telegraf, InfluxDB and Grafana.
 
+![image](https://github.com/phill4y/pi_monitoring/assets/62095410/c520afb4-722a-44d7-b1e3-7a1e53631e7d)
+
+
 ## Requirements
 
 * Docker
