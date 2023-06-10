@@ -14,7 +14,7 @@ This repo contains an easy to setup monitoring solution for a Raspberry Pi, usin
 1. Clone Repository `git clone https://github.com/phill4y/pi_monitoring.git`
 2. cd into git repo: `cd pi_monitoring`
 3. Create persistent storage directories for Grafana and InfluxDB: `mkdir /opt/influxdb /opt/grafana`
-4. Adjust permissions: `sudo chmod 775 /opt/influxdb && sudo chmod`
+4. Adjust permissions: `sudo chmod 775 /opt/influxdb && sudo chmod /opt/grafana`
 5. Start docker compose stack: `docker compose up -d`
 
 ## View logs of different services
