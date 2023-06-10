@@ -1,0 +1,48 @@
+version: "3"
+services:
+  grafana:
+    container_name: pi-monitoring-grafana
+    image: grafana/grafana:9.5.3
+    restart: always
+    environment:
+     - GF_SECURITY_ADMIN_USER=admin
+     - GF_SECURITY_ADMIN_PASSWORD=admin
+     - GF_USERS_ALLOW_SIGN_UP=false
+     - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+     - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/dashboard.json
+    ports:
+      - "3003:3000"
+    volumes:
+      - /opt/grafana:/var/lib/grafana
+      - ./provisioning:/etc/grafana/provisioning
+    depends_on:
+      - influxdb
+
+  influxdb:
+    container_name: pi-monitoring-influxdb
+    image: influxdb:1.8
+    # Unfortunately no apline available for arm64 yet
+    # image: influxdb:1.8-alpine
+    restart: always
+    environment:
+      - INFLUXDB_DB=influx
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    ports:
+      - "8086:8086"
+    volumes:
+      - /opt/influxdb:/var/lib/influxdb
+
+  telegraf:
+    container_name: pi-monitoring-telegraf
+    build:
+      dockerfile: ./Dockerfile.telegraf
+      context: .
+    image: pi-monitoring-telegraf
+    restart: always
+    # Required for monitoring entire RaspberryPi
+    privileged: true
+    volumes:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb

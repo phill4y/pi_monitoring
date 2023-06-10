@@ -1,0 +1,9 @@
+apiVersion: 1
+datasources:
+  - name: PiMonitoring
+    type: influxdb
+    url: http://influxdb:8086
+    access: proxy
+    database: raspberry
+    isDefault: true
+    uid: P951FEA4DE68E13C5

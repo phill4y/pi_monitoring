@@ -1,0 +1,12 @@
+FROM telegraf:1.26-alpine
+
+# Required for getting GPU temperature
+RUN apk add raspberrypi
+
+RUN addgroup telegraf video
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["telegraf"]
