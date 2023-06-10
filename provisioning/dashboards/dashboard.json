@@ -20,7 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10578,
   "graphTooltip": 1,
-  "id": 2,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -928,7 +928,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
+        "w": 2,
         "x": 14,
         "y": 1
       },
@@ -1058,8 +1058,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 3,
-        "x": 17,
+        "w": 2,
+        "x": 16,
         "y": 1
       },
       "id": 61860,
@@ -1177,7 +1177,7 @@
       "gridPos": {
         "h": 4,
         "w": 2,
-        "x": 20,
+        "x": 18,
         "y": 1
       },
       "id": 61863,
@@ -1245,6 +1245,130 @@
         }
       ],
       "title": "Swap usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P951FEA4DE68E13C5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 70
+              },
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 20,
+        "y": 1
+      },
+      "id": 61866,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P951FEA4DE68E13C5"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used_percent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "path",
+              "operator": "=",
+              "value": "/"
+            }
+          ]
+        }
+      ],
+      "title": "RootFS used",
       "type": "gauge"
     },
     {
@@ -2243,7 +2367,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -2251,7 +2374,6 @@
         "x": 0,
         "y": 34
       },
-      "hiddenSeries": false,
       "id": 42026,
       "interval": "$inter",
       "legend": {
@@ -2269,11 +2391,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2447,7 +2565,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -2455,7 +2572,6 @@
         "x": 12,
         "y": 34
       },
-      "hiddenSeries": false,
       "id": 28572,
       "interval": "$inter",
       "legend": {
@@ -2473,11 +2589,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2645,7 +2757,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -2653,7 +2764,6 @@
         "x": 0,
         "y": 41
       },
-      "hiddenSeries": false,
       "id": 58901,
       "interval": "$inter",
       "legend": {
@@ -2671,11 +2781,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2836,7 +2942,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -2844,7 +2949,6 @@
         "x": 12,
         "y": 41
       },
-      "hiddenSeries": false,
       "id": 50643,
       "interval": "$inter",
       "legend": {
@@ -2862,11 +2966,7 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3053,7 +3153,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3061,7 +3160,6 @@
         "x": 0,
         "y": 49
       },
-      "hiddenSeries": false,
       "id": 26024,
       "interval": "$inter",
       "legend": {
@@ -3080,11 +3178,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3188,7 +3282,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3196,7 +3289,6 @@
         "x": 12,
         "y": 49
       },
-      "hiddenSeries": false,
       "id": 61850,
       "interval": "$inter",
       "legend": {
@@ -3215,11 +3307,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3352,7 +3440,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3360,7 +3447,6 @@
         "x": 0,
         "y": 57
       },
-      "hiddenSeries": false,
       "id": 13782,
       "interval": "$inter",
       "legend": {
@@ -3382,11 +3468,7 @@
       "links": [],
       "maxPerRow": 3,
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3550,7 +3632,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3558,7 +3639,6 @@
         "x": 8,
         "y": 57
       },
-      "hiddenSeries": false,
       "id": 60200,
       "interval": "$inter",
       "legend": {
@@ -3580,11 +3660,7 @@
       "links": [],
       "maxPerRow": 3,
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3748,7 +3824,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3756,7 +3831,6 @@
         "x": 16,
         "y": 57
       },
-      "hiddenSeries": false,
       "id": 56720,
       "interval": "$inter",
       "legend": {
@@ -3778,11 +3852,7 @@
       "links": [],
       "maxPerRow": 3,
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3973,7 +4043,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -3981,7 +4050,6 @@
         "x": 0,
         "y": 65
       },
-      "hiddenSeries": false,
       "id": 52240,
       "interval": "$inter",
       "legend": {
@@ -4001,11 +4069,7 @@
       "links": [],
       "maxPerRow": 2,
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4120,7 +4184,6 @@
       "editable": true,
       "error": false,
       "fill": 1,
-      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -4128,7 +4191,6 @@
         "x": 12,
         "y": 65
       },
-      "hiddenSeries": false,
       "id": 33458,
       "interval": "$inter",
       "legend": {
@@ -4148,11 +4210,7 @@
       "links": [],
       "maxPerRow": 2,
       "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
       "percentage": false,
-      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4315,10 +4373,15 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "1m",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "influxdb",
+    "telegraf",
+    "raspberrypi",
+    "pi4"
+  ],
   "templating": {
     "list": [
       {
@@ -4440,7 +4503,7 @@
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "P951FEA4DE68E13C5"
+          "uid": "$datasource"
         },
         "definition": "",
         "hide": 0,
@@ -4465,7 +4528,7 @@
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "P951FEA4DE68E13C5"
+          "uid": "$datasource"
         },
         "definition": "",
         "hide": 0,
@@ -4490,7 +4553,7 @@
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "P951FEA4DE68E13C5"
+          "uid": "$datasource"
         },
         "definition": "",
         "hide": 0,
@@ -4515,7 +4578,7 @@
         },
         "datasource": {
           "type": "influxdb",
-          "uid": "P951FEA4DE68E13C5"
+          "uid": "$datasource"
         },
         "definition": "",
         "hide": 0,
@@ -4535,7 +4598,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -4564,8 +4627,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "Raspberry Pi Monitoring Copy",
-  "uid": "f0043291-eb65-4565-9bc7-bf015474d7a7",
+  "title": "Raspberry Pi Monitoring",
+  "uid": "sF7d-FHZz",
   "version": 1,
   "weekStart": ""
 }
